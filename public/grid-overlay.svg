@@ -1,0 +1,30 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Subtle grid -->
+  <g opacity="0.18">
+    <defs>
+      <pattern id="grid" width="320" height="320" patternUnits="userSpaceOnUse">
+        <path d="M320 0H0V320" stroke="white" stroke-opacity="0.22" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="1920" height="1080" fill="url(#grid)"/>
+  </g>
+
+  <!-- Frames -->
+  <g opacity="0.30" stroke="white" stroke-opacity="0.35" stroke-width="1">
+    <!-- center art frame -->
+    <rect x="700" y="260" width="520" height="520"/>
+    <!-- left frame -->
+    <rect x="80" y="320" width="420" height="420"/>
+    <!-- right frame -->
+    <rect x="1420" y="320" width="420" height="420"/>
+    <!-- crosshair -->
+    <path d="M960 260V780" stroke-opacity="0.22"/>
+    <path d="M700 520H1220" stroke-opacity="0.22"/>
+  </g>
+
+  <!-- Diagonal corner hints -->
+  <g opacity="0.22" stroke="white" stroke-opacity="0.35" stroke-width="1">
+    <path d="M80 320 L500 740" />
+    <path d="M1840 320 L1420 740" />
+  </g>
+</svg>

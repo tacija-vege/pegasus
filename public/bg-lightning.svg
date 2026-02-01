@@ -1,0 +1,47 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#000000"/>
+
+  <!-- Left teal field -->
+  <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+    gradientTransform="translate(480 620) rotate(10) scale(980 760)">
+    <stop stop-color="#00BBD6" stop-opacity="0.38"/>
+    <stop offset="0.55" stop-color="#0A6C84" stop-opacity="0.18"/>
+    <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1920" height="1080" fill="url(#g1)"/>
+
+  <!-- Center lift -->
+  <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+    gradientTransform="translate(960 500) rotate(90) scale(620 520)">
+    <stop stop-color="#00D7FF" stop-opacity="0.20"/>
+    <stop offset="0.55" stop-color="#007EA3" stop-opacity="0.10"/>
+    <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1920" height="1080" fill="url(#g2)"/>
+
+  <!-- Top bloom -->
+  <radialGradient id="g3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+    gradientTransform="translate(960 120) rotate(90) scale(520 820)">
+    <stop stop-color="#00E5FF" stop-opacity="0.18"/>
+    <stop offset="0.55" stop-color="#007EA3" stop-opacity="0.08"/>
+    <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1920" height="1080" fill="url(#g3)"/>
+
+  <!-- Right side is dark but NOT dead-black -->
+  <linearGradient id="g4" x1="1100" y1="0" x2="1920" y2="0" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#000000" stop-opacity="0"/>
+    <stop offset="0.55" stop-color="#000000" stop-opacity="0.40"/>
+    <stop offset="1" stop-color="#000000" stop-opacity="0.80"/>
+  </linearGradient>
+  <rect width="1920" height="1080" fill="url(#g4)"/>
+
+  <!-- Vignette -->
+  <radialGradient id="v" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+    gradientTransform="translate(960 540) rotate(90) scale(640 1180)">
+    <stop stop-color="#000000" stop-opacity="0"/>
+    <stop offset="0.70" stop-color="#000000" stop-opacity="0.55"/>
+    <stop offset="1" stop-color="#000000" stop-opacity="0.85"/>
+  </radialGradient>
+  <rect width="1920" height="1080" fill="url(#v)"/>
+</svg>
