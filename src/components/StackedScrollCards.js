@@ -102,36 +102,39 @@ export default function StackedScrollCards() {
   const cards = useMemo(
     () => [
       {
-        title: "Card 1",
-        desc: "Desc 1",
+        title: "Ahead of the curve",
+        desc: "Snipe or Launch a Token when Elon Musk mentions it",
         lines: [
-          "Define intent + constraints in one prompt.",
-          "Auto-route actions across integrated protocols.",
-          "Keep state and memory synced on-chain.",
+          "Detect mentions in real time",
+          "Auto-execute trades or launches",
+          "Stay first, beat the market",
         ],
         right: "phone",
+        image: "/card1.png",
         accent: "rgba(111,243,255,0.40)",
       },
       {
-        title: "Card 2",
-        desc: "Desc 2",
+        title: "Dominate the market",
+        desc: "Capture Market Trends the moment they appear—24/7",
         lines: [
-          "Simulate outcomes before capital is committed.",
-          "Track performance, risk, and execution cost.",
-          "Ship with audit-friendly visibility by default.",
+          "Monitor markets around the clock",
+          "React instantly to emerging signals",
+          "Execute faster than the competition",
         ],
         right: "chart",
+        image: "/card2.png",
         accent: "rgba(40,200,190,0.42)",
       },
       {
-        title: "Card 3",
-        desc: "Desc 3",
+        title: "Become a visionary",
+        desc: "Build and expand your agents as your needs grow",
         lines: [
-          "Triggers, guards, and retries — always-on.",
-          "Signed execution with configurable permissions.",
-          "Logs you can replay to debug and iterate fast.",
+          "Build once, scale infinitely",
+          "Deploy agents in minutes",
+          "Expand capabilities as you grow",
         ],
         right: "terminal",
+        image: "/card3.png",
         accent: "rgba(160,140,255,0.30)",
       },
     ],
@@ -149,20 +152,20 @@ export default function StackedScrollCards() {
 
   const vh = 450;
 
-  // Progress indicator (purely cosmetic, no impact on card animation)
   const stepIndex = useTransform(scrollYProgress, (p) => {
     const pp = clamp(p, 0, 1);
-    // We map the active portion to 0..2
     const u = clamp((pp - introHold) / activeRange, 0, 1);
     const t = easeInOut(u) * 2; // 0..2
     return t < 0.66 ? 0 : t < 1.33 ? 1 : 2;
   });
 
-  const preludeOpacity = useTransform(scrollYProgress, (p) =>
-    clamp(1 - p * 4, 0, 1)
-  );
+  const preludeOpacity = useTransform(scrollYProgress, (p) => {
+    // Keep text readable (never "multiplies" down to grey)
+    // Small fade as you move into the stack, but stays strong.
+    return clamp(1 - p * 0.8, 0.92, 1);
+  });
+
   const railsOpacity = useTransform(scrollYProgress, (p) => {
-    // rails appear shortly after entering, fade near end
     const inFade = clamp((p - 0.03) / 0.12, 0, 1);
     const outFade = clamp((1 - p) / 0.18, 0, 1);
     return Math.min(inFade, outFade) * 0.9;
@@ -176,36 +179,7 @@ export default function StackedScrollCards() {
       aria-label="Execution flow"
       id="stack"
     >
-      {/* Section-local atmosphere so it doesn't feel like a void */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {/* localized spotlight */}
-        <div
-          className="absolute left-1/2 top-[18vh] h-[820px] w-[1100px] -translate-x-1/2 blur-3xl opacity-60"
-          style={{
-            background:
-              "radial-gradient(circle_at_50%_40%, rgba(111,243,255,0.10), transparent 62%)",
-          }}
-        />
-        <div
-          className="absolute left-1/2 top-[48vh] h-[720px] w-[980px] -translate-x-1/2 blur-3xl opacity-45"
-          style={{
-            background:
-              "radial-gradient(circle_at_50%_50%, rgba(40,200,190,0.08), transparent 70%)",
-          }}
-        />
-
-        {/* faint local grid modulation */}
-        <div
-          className="absolute inset-x-0 top-[8vh] h-[92vh] opacity-[0.045]"
-          style={{
-            background:
-              "linear-gradient(to_right, rgba(255,255,255,0.10) 1px, transparent 1px), linear-gradient(to_bottom, rgba(255,255,255,0.10) 1px, transparent 1px)",
-            backgroundSize: "180px 180px",
-            maskImage:
-              "radial-gradient(closest-side at 50% 45%, black, transparent 72%)",
-          }}
-        />
-      </div>
+      {/* ✅ REMOVED: Section-local atmosphere (glow/grid) */}
 
       {/* Prelude / Handoff (sits before the sticky begins) */}
       <motion.div
@@ -222,40 +196,56 @@ export default function StackedScrollCards() {
           className="pointer-events-none absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-white/12"
         />
 
-        <div className="pt-12 sm:pt-16">
+        {/* Match LaunchSection spacing */}
+        <div className="pt-16 sm:pt-20">
+          {/* Small label */}
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-[11px] font-semibold tracking-[0.30em] text-white/45">
               EXECUTION FLOW
             </p>
+          </div>
 
-            <h2 className="mt-4 text-balance text-[26px] font-normal tracking-[-0.015em] text-white/90 sm:text-[34px]">
-              Scroll to step through how an agent
-              <span className="relative mx-2 inline-block">
-                <span aria-hidden="true" className="absolute inset-0 bg-white/7" />
-                <span className="absolute left-0 top-0 h-3 w-3 border-l border-t border-white/40" />
-                <span className="absolute right-0 top-0 h-3 w-3 border-r border-t border-white/40" />
-                <span className="absolute left-0 bottom-0 h-3 w-3 border-l border-b border-white/40" />
-                <span className="absolute right-0 bottom-0 h-3 w-3 border-r border-b border-white/40" />
-                <span className="relative px-4 py-1 -translate-y-[2px] inline-block">
-                  reacts
+          {/* Headline (match Launch sizes) */}
+          <div className="mx-auto mt-4 max-w-4xl text-center">
+            <h2
+              className="
+                text-white/80 font-normal tracking-[-0.015em]
+                text-[34px] leading-[1.12]
+                sm:text-[46px] sm:leading-[1.08]
+                lg:text-[56px] lg:leading-[1.05]
+              "
+            >
+              <span className="block">Scroll to step through how</span>
+
+              <span className="block">
+                an agent
+                <span className="relative mx-2 inline-block">
+                  <span aria-hidden="true" className="absolute inset-0 bg-white/8" />
+                  <span className="absolute left-0 top-0 h-3 w-3 border-l border-t border-white/55" />
+                  <span className="absolute right-0 top-0 h-3 w-3 border-r border-t border-white/55" />
+                  <span className="absolute left-0 bottom-0 h-3 w-3 border-l border-b border-white/55" />
+                  <span className="absolute right-0 bottom-0 h-3 w-3 border-r border-b border-white/55" />
+                  <span className="relative block px-10 py-2 -translate-y-[3px]">
+                    reacts
+                  </span>
                 </span>
+                in real-time
               </span>
-              in real-time
             </h2>
+          </div>
 
-            <p className="mx-auto mt-4 max-w-xl text-pretty text-xs leading-6 text-white/55 sm:text-sm">
-              Each step is a single screen — triggers, validation, and execution —
-              designed to feel like an instrument panel, not a carousel.
-            </p>
+          <p className="mx-auto mt-6 max-w-xl text-pretty text-xs leading-6 text-white/55 sm:text-sm text-center">
+            Each step is a single screen — triggers, validation, and execution —
+            designed to feel like an instrument panel, not a carousel.
+          </p>
 
-            {/* hint line */}
-            <div className="relative mx-auto mt-10 w-full max-w-2xl">
-              <span aria-hidden="true" className="block h-px w-full bg-white/10" />
-              <span
-                aria-hidden="true"
-                className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-white/12"
-              />
-            </div>
+          {/* hint line */}
+          <div className="relative mx-auto mt-10 w-full max-w-2xl">
+            <span aria-hidden="true" className="block h-px w-full bg-white/10" />
+            <span
+              aria-hidden="true"
+              className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-white/12"
+            />
           </div>
         </div>
       </motion.div>
@@ -263,7 +253,6 @@ export default function StackedScrollCards() {
       {/* Sticky scrollytelling */}
       <div className="sticky top-0 flex h-screen items-center">
         <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
-          {/* Rails + progress indicator (frames empty space) */}
           <motion.div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -306,6 +295,7 @@ export default function StackedScrollCards() {
                 desc={c.desc}
                 lines={c.lines}
                 right={c.right}
+                image={c.image}
                 accent={c.accent}
               />
             ))}
@@ -362,6 +352,7 @@ function StepStackCard({
   desc,
   lines,
   right,
+  image,
   accent,
 }) {
   const DECK_GAP = 20;
@@ -431,14 +422,26 @@ function StepStackCard({
       className="absolute inset-0 will-change-transform"
       style={{ y, scale, opacity, zIndex }}
     >
-      <StackCard title={title} desc={desc} lines={lines} right={right} accent={accent} />
+      <StackCard
+        title={title}
+        desc={desc}
+        lines={lines}
+        right={right}
+        image={image}
+        accent={accent}
+      />
     </motion.div>
   );
 }
 
-/* ---------- RESTYLED CARD (only visuals changed) ---------- */
-
-function StackCard({ title, desc, lines = [], right, accent = "rgba(111,243,255,0.35)" }) {
+function StackCard({
+  title,
+  desc,
+  lines = [],
+  right,
+  image,
+  accent = "rgba(111,243,255,0.35)",
+}) {
   return (
     <article
       className="
@@ -472,7 +475,7 @@ function StackCard({ title, desc, lines = [], right, accent = "rgba(111,243,255,
 
       <div className="relative grid min-h-[520px] grid-cols-1 items-center gap-10 px-10 py-14 sm:grid-cols-2 sm:px-14">
         <div>
-          <h3 className="text-balance text-[28px] font-semibold tracking-[-0.02em] text-white/95 sm:text-[34px]">
+          <h3 className="text-balance text-[28px] font-semibold tracking-[-0.02em] text-white/80 sm:text-[34px]">
             {title}
           </h3>
 
@@ -480,7 +483,6 @@ function StackCard({ title, desc, lines = [], right, accent = "rgba(111,243,255,
             {desc}
           </p>
 
-          {/* NEW: extra tasteful lines */}
           {lines?.length ? (
             <div className="mt-6 max-w-[50ch] space-y-2">
               {lines.map((t, idx) => (
@@ -497,42 +499,69 @@ function StackCard({ title, desc, lines = [], right, accent = "rgba(111,243,255,
         </div>
 
         <div className="relative flex items-center justify-center">
-          <RightMock kind={right} />
+          <RightMock kind={right} src={image} />
         </div>
       </div>
     </article>
   );
 }
 
-/* ---------- Right mock stays the same (already matches style) ---------- */
+/* ---------- Right mock: now renders your real images ---------- */
 
-function RightMock({ kind }) {
-  if (kind === "phone") {
-    return (
-      <div className="relative h-[420px] w-[260px] rounded-[36px] border border-white/10 bg-white/5 backdrop-blur-md">
-        <div className="absolute left-1/2 top-3 h-6 w-24 -translate-x-1/2 rounded-full bg-black/40" />
-        <div className="absolute left-5 top-20 h-10 w-44 rounded-lg bg-white/8" />
-        <div className="absolute left-5 top-36 h-10 w-44 rounded-lg bg-white/8" />
-        <div className="absolute bottom-6 left-1/2 h-10 w-10 -translate-x-1/2 rounded-full border border-white/10 bg-white/5" />
-      </div>
-    );
-  }
-
-  if (kind === "chart") {
-    return (
-      <div className="relative h-[420px] w-[420px] rounded-[22px] border border-white/10 bg-white/5 backdrop-blur-md">
-        <div className="absolute left-6 top-6 h-10 w-44 rounded-lg bg-white/8" />
-        <div className="absolute inset-x-6 bottom-8 top-24 rounded-xl bg-black/25" />
-      </div>
-    );
-  }
+function RightMock({ kind, src }) {
+  const frameClass =
+    kind === "phone"
+      ? "h-[420px] w-[260px] rounded-[36px]"
+      : "h-[420px] w-[420px] rounded-[22px]";
 
   return (
-    <div className="relative h-[420px] w-[420px] rounded-[22px] border border-white/10 bg-white/5 backdrop-blur-md">
-      <div className="absolute left-6 top-6 h-10 w-64 rounded-lg bg-white/8" />
-      <div className="absolute left-6 top-24 h-6 w-56 rounded bg-white/6" />
-      <div className="absolute left-6 top-36 h-6 w-72 rounded bg-white/6" />
-      <div className="absolute left-6 top-48 h-6 w-48 rounded bg-white/6" />
+    <div
+      className={[
+        "relative overflow-hidden",
+        frameClass,
+        // ✅ removed the border that causes the white outline
+        "bg-white/5 backdrop-blur-md",
+      ].join(" ")}
+    >
+      <img
+        src={src}
+        alt=""
+        aria-hidden="true"
+        className="h-full w-full object-cover"
+        draggable="false"
+      />
+
+      {/* ✅ blend edges into the card */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(closest-side at 50% 50%, transparent 62%, rgba(6,11,16,0.55) 78%, rgba(6,11,16,0.92) 100%)",
+        }}
+      />
+
+      {/* ✅ blur only the perimeter */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 backdrop-blur-[7px]"
+        style={{
+          WebkitMaskImage:
+            "radial-gradient(circle at center, transparent 60%, rgba(0,0,0,1) 84%)",
+          maskImage:
+            "radial-gradient(circle at center, transparent 60%, rgba(0,0,0,1) 84%)",
+        }}
+      />
+
+      {/* existing lighting overlay (unchanged) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(0,0,0,0.12), transparent 35%, rgba(0,0,0,0.20))",
+        }}
+      />
     </div>
   );
 }

@@ -7,7 +7,7 @@ function DotDivider() {
 function HeroMeta() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-y-2 text-[10px] font-semibold tracking-[0.30em] text-white/45">
-      <span className="text-white/55">SENTIO AGENT OS</span>
+      <span className="text-white/55">PEGASUSOSX AGENT OS</span>
       <DotDivider />
       <span className="text-white/55">LIVE ON-CHAIN</span>
       <DotDivider />
@@ -77,7 +77,7 @@ export default function Hero() {
               lg:text-[92px] lg:leading-[1.02]
             "
           >
-            <span className="block whitespace-nowrap">
+            <span className="block whitespace-nowrap text-white/80">
               Build Agents, Automate
             </span>
 
@@ -91,14 +91,14 @@ export default function Hero() {
               <span className="absolute left-0 bottom-0 h-3 w-3 border-l border-b border-white/55" />
               <span className="absolute right-0 bottom-0 h-3 w-3 border-r border-b border-white/55" />
 
-              <span className="relative block px-8 py-2 -translate-y-[3px]">
-                Faster &amp; Dominate
+              <span className="relative block px-8 py-2 -translate-y-[3px] text-white/80">
+                Fast &amp; Dominant
               </span>
             </span>
           </h1>
 
         <p className="mx-auto mt-7 max-w-[56ch] text-center text-pretty text-white/55 text-xs leading-6 sm:text-sm">
-          With Sentio.ai, you can create on-chain agents effortlessly, tapping
+          With PegasusOSX, you can create on-chain agents effortlessly, tapping
           into 100+ DeFi integrations and tokenized ownership for shared rewards.
         </p>
 

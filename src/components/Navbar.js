@@ -212,15 +212,10 @@ export default function Navbar() {
 
   const items = useMemo(
     () => [
-      { label: "HOME", id: "top", meta: "Hero & overview" },
-      { label: "GENERATE", id: "generate", meta: "Ask SEN to build" },
+      { label: "HOME", id: "top", meta: "Profile & overview" },
+      { label: "GENERATE", id: "generate", meta: "Ask POSX to build" },
       { label: "LAUNCH", id: "launch", meta: "Run 24/7 execution" },
       { label: "STACK", id: "stack", meta: "Scroll flow demo" },
-
-      { label: "FEATURES", id: "todo-features", meta: "Coming soon" },
-      { label: "TEMPLATES", id: "todo-templates", meta: "Coming soon" },
-      { label: "FAQ", id: "todo-faq", meta: "Coming soon" },
-      { label: "ROADMAP", id: "todo-roadmap", meta: "Coming soon" },
     ],
     []
   );
@@ -257,9 +252,6 @@ export default function Navbar() {
     if (id.startsWith("todo-")) return;
     scrollToId(id);
   }
-
-  const left = items.slice(0, 4);
-  const right = items.slice(4, 8);
 
   return (
     <header className="sticky top-0 z-50">
@@ -428,30 +420,17 @@ export default function Navbar() {
                         </div>
 
                         <div className="relative px-3 pb-3 sm:px-4 sm:pb-4">
-                          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
-                            <div className="space-y-2">
-                              {left.map((it) => (
-                                <MenuItem
-                                  key={it.id}
-                                  label={it.label}
-                                  id={it.id}
-                                  meta={it.meta}
-                                  onPick={onPick}
-                                />
-                              ))}
-                            </div>
-
-                            <div className="space-y-2">
-                              {right.map((it) => (
-                                <MenuItem
-                                  key={it.id}
-                                  label={it.label}
-                                  id={it.id}
-                                  meta={it.meta}
-                                  onPick={onPick}
-                                />
-                              ))}
-                            </div>
+                          {/* ✅ single column now */}
+                          <div className="space-y-2">
+                            {items.map((it) => (
+                              <MenuItem
+                                key={it.id}
+                                label={it.label}
+                                id={it.id}
+                                meta={it.meta}
+                                onPick={onPick}
+                              />
+                            ))}
                           </div>
 
                           <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4 backdrop-blur-md">
@@ -468,21 +447,21 @@ export default function Navbar() {
                               <div className="flex items-center gap-2">
                                 <SocialIconButton
                                   label="Twitter / X"
-                                  href="https://twitter.com/"
+                                  href="https://x.com/Pegasus_OSX"
                                 >
                                   <IconX className="h-[18px] w-[18px]" />
                                 </SocialIconButton>
 
                                 <SocialIconButton
                                   label="Telegram"
-                                  href="https://t.me/"
+                                  href="https://t.me/PegasusOSX"
                                 >
                                   <IconTelegram className="h-[18px] w-[18px]" />
                                 </SocialIconButton>
 
                                 <SocialIconButton
                                   label="GitBook"
-                                  href="https://www.gitbook.com/"
+                                  href="https://docs.pegasusosx.com"
                                 >
                                   <IconGitBook className="h-[18px] w-[18px]" />
                                 </SocialIconButton>
@@ -498,9 +477,10 @@ export default function Navbar() {
             </div>
 
             {/* Right: View Docs (kept) */}
-            <button
-              type="button"
-              onClick={() => scrollToId("docs")}
+            <a
+              href="https://docs.pegasusosx.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 inline-flex items-center gap-2 rounded-md
                 border border-white/14 bg-white/5 px-4 py-2
@@ -513,10 +493,8 @@ export default function Navbar() {
               aria-label="View docs"
             >
               <span>VIEW DOCS</span>
-              <span aria-hidden="true" className="text-white/50">
-                ↘
-              </span>
-            </button>
+              <span aria-hidden="true" className="text-white/50">↗</span>
+            </a>
           </div>
         </nav>
       </div>

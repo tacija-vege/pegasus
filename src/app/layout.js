@@ -1,8 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Sentio Landing",
-  description: "Landing page recreation with Next.js + Tailwind v4"
+  title: "PegasusOSX — Autonomous On-Chain Agent Infrastructure",
+  description:
+    "Developer-first platform for building automated on-chain agents with deep DeFi integrations, tokenized ownership, and reliable 24/7 execution."
 };
 
 export default function RootLayout({ children }) {

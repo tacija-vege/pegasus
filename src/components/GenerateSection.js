@@ -227,7 +227,7 @@ function FeatureCard({
       </div>
 
       <div className="relative px-8 pb-9 pt-20">
-        <h3 className="text-[26px] font-semibold tracking-[-0.02em] text-white/92">
+        <h3 className="text-[26px] font-semibold tracking-[-0.02em] text-white/80">
           {topTitle}
         </h3>
 
@@ -262,7 +262,7 @@ function FeatureCard({
           />
         </div>
 
-        <h4 className="mt-14 text-[34px] font-semibold tracking-[-0.02em] text-white/95">
+        <h4 className="mt-14 text-[34px] font-semibold tracking-[-0.02em] text-white/80">
           {bottomTitle}
         </h4>
       </div>
@@ -334,13 +334,13 @@ export default function GenerateSection() {
 
           <h2
             className="
-              mt-4 text-white/95 font-normal tracking-[-0.015em]
+              mt-4 text-white/80 font-normal tracking-[-0.015em]
               text-[34px] leading-[1.12]
               sm:text-[46px] sm:leading-[1.08]
               lg:text-[56px] lg:leading-[1.05]
             "
           >
-            <span className="block">Ask SEN to Generate</span>
+            <span className="block">Ask POSX to Generate</span>
 
             <span className="relative mt-5 inline-block">
               <span aria-hidden="true" className="absolute inset-0 bg-white/8" />
@@ -352,7 +352,7 @@ export default function GenerateSection() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-[60ch] text-pretty text-xs leading-6 text-white/55 sm:text-sm">
-            Describe the workflow once—SEN composes agents, integrates protocols,
+            Describe the workflow once—POSX composes agents, integrates protocols,
             and deploys executions with safe, repeatable defaults.
           </p>
         </div>

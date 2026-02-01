@@ -175,7 +175,7 @@ export default function LaunchSection() {
             >
               <h2
                 className="
-                  text-white/95 font-normal tracking-[-0.015em]
+                  text-white/80 font-normal tracking-[-0.015em]
                   text-[34px] leading-[1.12]
                   sm:text-[46px] sm:leading-[1.08]
                   lg:text-[56px] lg:leading-[1.05]
@@ -211,41 +211,45 @@ export default function LaunchSection() {
               >
                 <p className="mx-auto max-w-xl text-pretty text-xs leading-6 text-white/55 sm:text-sm md:mx-0">
                   Whether you’re tracking market trends or reacting to social
-                  signals, Sentio helps you capitalize instantly—no downtime
+                  signals, PegasusOSX helps you capitalize instantly—no downtime
                   needed.
                 </p>
 
                 <SpecInline />
 
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
-                  <button
-                    type="button"
-                    className="
-                      inline-flex items-center justify-center rounded-md
-                      border border-white/18 bg-white/7 px-6 py-3
-                      text-xs font-semibold tracking-[0.14em] text-white/85
-                      backdrop-blur-md hover:bg-white/12
-                      focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-glow/60
-                      focus-visible:ring-offset-2 focus-visible:ring-offset-ink
-                    "
-                  >
-                    START AUTOMATING NOW
-                  </button>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+                <a
+                  href="https://docs.pegasusosx.com"   // ← change
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex items-center justify-center rounded-md
+                    border border-white/18 bg-white/7 px-6 py-3
+                    text-xs font-semibold tracking-[0.14em] text-white/85
+                    backdrop-blur-md hover:bg-white/12
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-glow/60
+                    focus-visible:ring-offset-2 focus-visible:ring-offset-ink
+                  "
+                >
+                  START AUTOMATING NOW
+                </a>
 
-                  <button
-                    type="button"
-                    className="
-                      inline-flex items-center justify-center rounded-md
-                      border border-white/12 bg-transparent px-6 py-3
-                      text-xs font-semibold tracking-[0.14em] text-white/65
-                      hover:text-white/85
-                      focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-glow/60
-                      focus-visible:ring-offset-2 focus-visible:ring-offset-ink
-                    "
-                  >
-                    VIEW TEMPLATES →
-                  </button>
-                </div>
+                <a
+                  href="https://docs.pegasusosx.com/get-started/agent-profile"  // ← change
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex items-center justify-center rounded-md
+                    border border-white/12 bg-transparent px-6 py-3
+                    text-xs font-semibold tracking-[0.14em] text-white/65
+                    hover:text-white/85
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-glow/60
+                    focus-visible:ring-offset-2 focus-visible:ring-offset-ink
+                  "
+                >
+                  VIEW TEMPLATES →
+                </a>
+              </div>
               </div>
 
               {/* Right: HUD */}

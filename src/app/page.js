@@ -5,6 +5,8 @@ import GenerateSection from "../components/GenerateSection";
 import SectionBridge from "../components/SectionBridge";
 import LaunchSection from "../components/LaunchSection";
 import StackedScrollCards from "../components/StackedScrollCards";
+import Footer from "../components/Footer";
+
 
 export default function Page() {
   return (
@@ -51,19 +53,6 @@ export default function Page() {
               blur-3xl opacity-70"
           />
 
-          <div
-            className="glow-breath absolute left-1/2 bottom-[-420px]
-              h-[1200px] w-[1200px] rounded-full
-              bg-[radial-gradient(circle_at_50%_35%,rgba(111,243,255,0.30),transparent_68%)]
-              blur-3xl opacity-95"
-          />
-
-          <div
-            className="glow-drift-r absolute right-[10%] bottom-[-360px]
-              h-[900px] w-[900px] rounded-full
-              bg-[radial-gradient(circle_at_50%_50%,rgba(160,140,255,0.12),transparent_70%)]
-              blur-3xl opacity-60"
-          />
         </div>
 
         {/* ===== GRID ===== */}
@@ -93,8 +82,8 @@ export default function Page() {
             <GenerateSection />
             <LaunchSection />
             <StackedScrollCards />
-            <div aria-hidden="true" className="h-[30vh]" />
           </div>
+          <Footer />
         </div>
       </div>
     </main>
