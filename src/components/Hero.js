@@ -1,7 +1,11 @@
 import HorseGraphic from "./HorseGraphic";
 
 function DotDivider() {
-  return <span aria-hidden="true" className="mx-3 text-white/20">•</span>;
+  return (
+    <span aria-hidden="true" className="mx-3 text-white/20">
+      •
+    </span>
+  );
 }
 
 function HeroMeta() {
@@ -31,9 +35,16 @@ function HeroSpecs() {
   );
 }
 
-export default function Hero() {
+/**
+ * ✅ Desktop layout: UNCHANGED (your exact markup)
+ * Hidden on mobile, visible from sm and up
+ */
+function DesktopHero() {
   return (
-    <section id="top" className ="scroll-mt-24 relative pb-10 pt-20 sm:pb-14 sm:pt-24 lg:pt-28">
+    <section
+      id="top"
+      className="scroll-mt-24 relative pb-10 pt-20 sm:pb-14 sm:pt-24 lg:pt-28 hidden sm:block"
+    >
       {/* Local hero atmosphere (keeps center feeling authored) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         {/* spotlight behind headline */}
@@ -97,14 +108,15 @@ export default function Hero() {
             </span>
           </h1>
 
-        <p className="mx-auto mt-7 max-w-[56ch] text-center text-pretty text-white/55 text-xs leading-6 sm:text-sm">
-          With PegasusOSX, you can create on-chain agents effortlessly, tapping
-          into 100+ DeFi integrations and tokenized ownership for shared rewards.
-        </p>
+          <p className="mx-auto mt-7 max-w-[56ch] text-center text-pretty text-white/55 text-xs leading-6 sm:text-sm">
+            With PegasusOSX, you can create on-chain agents effortlessly, tapping
+            into 100+ DeFi integrations and tokenized ownership for shared
+            rewards.
+          </p>
 
           <HeroSpecs />
 
-        {/* CTA row (single primary) */}
+          {/* CTA row (single primary) */}
           {/* Scroll cue (slightly more alive) */}
           <div className="mt-12 flex flex-col items-center">
             <span className="h-10 w-px bg-white/10" aria-hidden="true" />
@@ -122,5 +134,100 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * ✅ Mobile layout: Separate + no HorseGraphic
+ * Visible only on mobile (<sm)
+ */
+function MobileHero() {
+  return (
+    <section
+      id="top"
+      className="scroll-mt-24 relative pt-16 pb-10 sm:hidden"
+    >
+      {/* Mobile hero atmosphere (no horse) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        {/* spotlight */}
+        <div
+          className="absolute left-1/2 top-[-120px] h-[520px] w-[520px] -translate-x-1/2 blur-3xl opacity-60"
+          style={{
+            background:
+              "radial-gradient(circle_at_50%_45%, rgba(111,243,255,0.10), transparent 62%)",
+          }}
+        />
+
+        {/* subtle grid */}
+        <div
+          className="absolute inset-x-0 top-0 h-[420px] opacity-[0.045]"
+          style={{
+            background:
+              "linear-gradient(to_right, rgba(255,255,255,0.10) 1px, transparent 1px), linear-gradient(to_bottom, rgba(255,255,255,0.10) 1px, transparent 1px)",
+            backgroundSize: "140px 140px",
+            maskImage:
+              "radial-gradient(closest-side at 50% 42%, black, transparent 72%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto flex max-w-[92vw] flex-col items-center text-center px-4">
+        <HeroMeta />
+
+        <h1 className="mt-6 font-normal tracking-[-0.015em] text-white text-[36px] leading-[1.12]">
+          {/* On mobile, remove nowrap to prevent overflow */}
+          <span className="block text-white/80">
+            Build Agents, Automate
+          </span>
+
+          <span className="relative mt-5 inline-block max-w-full">
+            {/* Highlight bar */}
+            <span aria-hidden="true" className="absolute inset-0 bg-white/8" />
+
+            {/* Corner brackets */}
+            <span className="absolute left-0 top-0 h-3 w-3 border-l border-t border-white/55" />
+            <span className="absolute right-0 top-0 h-3 w-3 border-r border-t border-white/55" />
+            <span className="absolute left-0 bottom-0 h-3 w-3 border-l border-b border-white/55" />
+            <span className="absolute right-0 bottom-0 h-3 w-3 border-r border-b border-white/55" />
+
+            {/* Tighter padding so it fits small screens */}
+            <span className="relative block px-6 py-2 -translate-y-[2px] text-white/80">
+              Fast &amp; Dominant
+            </span>
+          </span>
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-[46ch] text-center text-pretty text-white/55 text-xs leading-6">
+          With PegasusOSX, you can create on-chain agents effortlessly, tapping
+          into 100+ DeFi integrations and tokenized ownership for shared rewards.
+        </p>
+
+        <HeroSpecs />
+
+        {/* Scroll cue */}
+        <div className="mt-10 flex flex-col items-center">
+          <span className="h-10 w-px bg-white/10" aria-hidden="true" />
+          <span
+            className="
+              mt-2 inline-flex h-6 w-6 items-center justify-center rounded-full
+              border border-white/10 bg-white/5 text-white/40
+              animate-bounce motion-reduce:animate-none
+            "
+            aria-hidden="true"
+          >
+            ↓
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Hero() {
+  return (
+    <>
+      <MobileHero />
+      <DesktopHero />
+    </>
   );
 }
